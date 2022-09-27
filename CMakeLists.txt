@@ -18,11 +18,13 @@ cmake_minimum_required(VERSION 3.13 FATAL_ERROR)
 include(cmake/modules/set_ifndef.cmake)
 include(cmake/modules/find_library_create_target.cmake)
 
-# set_ifndef(TRT_LIB_DIR ${CMAKE_BINARY_DIR})
-# set_ifndef(TRT_LIB_DIR ../lib)
-set(TRT_LIB_DIR ${TRT_LIB_PATH})
+set_ifndef(TRT_LIB_DIR ${CMAKE_BINARY_DIR})
+set_ifndef(TRT_OUT_DIR ${CMAKE_BINARY_DIR})
+#set(TRT_LIB_DIR /home/wanghao/Desktop/projects/TensorRT/lib) #${TRT_LIB_PATH})
+#set(TRT_OUT_DIR /home/wanghao/Desktop/projects/TensorRT/lib) #${TRT_LIB_PATH})
 
-message("TRT_LIB_DIR : ${TRT_LIB_DIR}, TRT_LIBPATH : ${TRT_LIBPATH}")
+
+message("TRT_LIB_DIR : ${TRT_LIB_DIR}, TRT_OUT_DIR : ${TRT_OUT_DIR}")
 
 file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/include/NvInferVersion.h" VERSION_STRINGS REGEX "#define NV_TENSORRT_.*")
 
