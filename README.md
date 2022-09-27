@@ -121,7 +121,15 @@ For Linux platforms, we recommend that you generate a docker container for build
 	2. [NVIDIA Container Toolkit](#prerequisites) is required for GPU access (running TensorRT applications) inside the build container.
 	3. `sudo` password for Ubuntu build containers is 'nvidia'.
 	4. Specify port number using `--jupyter <port>` for launching Jupyter notebooks.
-
+## Building Only With Self-Defined Plugins
+   **Example: Linux (x86-64) build with default cuda-11.3**
+	```bash
+	cd $TRT_OSSPATH
+	mkdir -p build && cd build
+	cmake .. -DTRT_LIB_DIR=$TRT_LIBPATH -DTRT_OUT_DIR=`pwd`/out -DBUILD_PARSERS=OFF -DBUILD_SAMPLES=OFF -DBUILD_PLUGINS=ON
+	make -j20
+	```
+   
 ## Building TensorRT-OSS
 * Generate Makefiles or VS project (Windows) and build.
 
